@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Model;
+import Model.Server;
 import Model.UserThread;
 
 import java.net.ServerSocket;
@@ -13,10 +14,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Controller {
 	private Model model = new Model();
-	private UserThread clients[] = new UserThread[50];
-	private int clientCount = 0;
-	private ServerSocket server = null;
-	private Thread thread = null;
+	private Server server = new Server();
 	
 	@FXML
 	private Button btn_service;
@@ -25,10 +23,6 @@ public class Controller {
 	
 	@FXML
 	private void service(ActionEvent event) {
-		if (thread == null) {
-			thread = new Thread(model);
-			thread.start();
-		}
 		
 		if (btn_service.getText().equals("Start")) {
 			btn_service.setDisable(true);
